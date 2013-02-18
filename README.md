@@ -1,0 +1,4 @@
+symplefy
+========
+
+Simple financial system
