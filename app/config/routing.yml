@@ -1,0 +1,20 @@
+symplefy_backend:
+    resource: "@SymplefyBackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+symplefy_frontend:
+    resource: "@SymplefyFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+entry:
+    resource: "@EntryBundle/Resources/config/routing.yml"
+    prefix:   /
+
+budget:
+    resource: "@BudgetBundle/Resources/config/routing.yml"
+    prefix:   /
+
+finance_core:
+    resource: "@FinanceCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+

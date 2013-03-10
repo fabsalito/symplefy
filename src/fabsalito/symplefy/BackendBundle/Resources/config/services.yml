@@ -1,0 +1,7 @@
+parameters:
+#    symplefy_backend.example.class: fabsalito\symplefy\BackendBundle\Example
+
+services:
+#    symplefy_backend.example:
+#        class: %symplefy_backend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
