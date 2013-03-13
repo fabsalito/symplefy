@@ -19,10 +19,10 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new fabsalito\symplefy\FrontendBundle\SymplefyFrontendBundle(),
-            new fabsalito\symplefy\BackendBundle\SymplefyBackendBundle(),
             new fabsalito\GeoBundle\fabsalitoGeoBundle(),
             new fabsalito\FinanceBundle\fabsalitoFinanceBundle(),
+            new fabsalito\symplefy\FrontendBundle\SymplefyFrontendBundle(),
+            new fabsalito\symplefy\BackendBundle\SymplefyBackendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

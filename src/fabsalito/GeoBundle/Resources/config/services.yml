@@ -1,7 +1,7 @@
 parameters:
-#    fabsalito_geo.example.class: fabsalito\GeoBundle\Example
+    fabsalito_geo.default.class: fabsalito\GeoBundle\Controller\DefaultController
 
 services:
-#    fabsalito_geo.example:
-#        class: %fabsalito_geo.example.class%
+     fabsalito_geo.default:
+        class: %fabsalito_geo.default.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

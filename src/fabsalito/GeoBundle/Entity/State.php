@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * fabsalito\GeoBundle\Entity\Currency
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="fabsalito\GeoBundle\Entity\CountryRepository")
+ * @ORM\Entity(repositoryClass="fabsalito\GeoBundle\Entity\StateRepository")
  */
-class Country
+class State
 {
     /**
      * @var integer
@@ -22,24 +22,19 @@ class Country
      */
     private $id;
 
-    /**
-     * @var string $country
-     *
-     * @ORM\Column(name="country", type="string", length=255)
-     *
-     * @Assert\Type(type="string")
-     * @Assert\NotBlank()
+    /*
+     * @ORM\ManyToOne(targetEntity="fabsalito\GeoBundle\Entity\Country")
      */
-    private $country;
+    private $country_id;
 
     /**
-     * @var string $area_code
+     * @var string $state
      *
-     * @ORM\Column(name="area_code", type="string", length=255)
+     * @ORM\Column(name="state", type="string", length=255)
      *
      * @Assert\Type(type="string")
      */
-    private $area_code;
+    private $state;
 
     /**
      * @var decimal $latitude
@@ -65,7 +60,6 @@ class Country
      * @ORM\Column(name="created", type="datetime")
      *
      * @Assert\DateTime
-     * @Assert\NotBlank()
      */
     private $created;
 
@@ -75,7 +69,6 @@ class Country
      * @ORM\Column(name="updated", type="datetime")
      *
      * @Assert\DateTime
-     * @Assert\NotBlank()
      */
     private $updated;
 
@@ -85,7 +78,6 @@ class Country
      * @ORM\Column(name="audit_user", type="string", length=255)
      *
      * @Assert\Type(type="string")
-     * @Assert\NotBlank()
      */
     private $audit_user;
 
@@ -95,15 +87,13 @@ class Country
      * @ORM\Column(name="enabled", type="boolean")
      *
      * @Assert\Type(type="bool")
-     * @Assert\NotBlank()
      */
     private $enabled;
 
     public function __toString()
     {
-        return $this->getCountry();
+        return $this->getState();
     }
-
 
     /**
      * Get id
@@ -116,56 +106,33 @@ class Country
     }
 
     /**
-     * Set country
+     * Set state
      *
-     * @param string $country
-     * @return Country
+     * @param string $state
+     * @return State
      */
-    public function setCountry($country)
+    public function setState($state)
     {
-        $this->country = $country;
+        $this->state = $state;
 
         return $this;
     }
 
     /**
-     * Get country
+     * Get state
      *
      * @return string
      */
-    public function getCountry()
+    public function getState()
     {
-        return $this->country;
-    }
-
-    /**
-     * Set area_code
-     *
-     * @param string $areaCode
-     * @return Country
-     */
-    public function setAreaCode($areaCode)
-    {
-        $this->area_code = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * Get area_code
-     *
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->area_code;
+        return $this->state;
     }
 
     /**
      * Set latitude
      *
      * @param float $latitude
-     * @return Country
+     * @return State
      */
     public function setLatitude($latitude)
     {
@@ -188,7 +155,7 @@ class Country
      * Set longitude
      *
      * @param float $longitude
-     * @return Country
+     * @return State
      */
     public function setLongitude($longitude)
     {
@@ -211,7 +178,7 @@ class Country
      * Set created
      *
      * @param \DateTime $created
-     * @return Country
+     * @return State
      */
     public function setCreated($created)
     {
@@ -234,7 +201,7 @@ class Country
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Country
+     * @return State
      */
     public function setUpdated($updated)
     {
@@ -257,7 +224,7 @@ class Country
      * Set audit_user
      *
      * @param string $auditUser
-     * @return Country
+     * @return State
      */
     public function setAuditUser($auditUser)
     {
@@ -280,7 +247,7 @@ class Country
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Country
+     * @return State
      */
     public function setEnabled($enabled)
     {

@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * fabsalito\GeoBundle\Entity\Currency
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="fabsalito\GeoBundle\Entity\CountryRepository")
+ * @ORM\Entity(repositoryClass="fabsalito\GeoBundle\Entity\CityRepository")
  */
-class Country
+class City
 {
     /**
      * @var integer
@@ -23,14 +23,32 @@ class Country
     private $id;
 
     /**
-     * @var string $country
+     * @var string $city
      *
-     * @ORM\Column(name="country", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255)
      *
      * @Assert\Type(type="string")
-     * @Assert\NotBlank()
      */
-    private $country;
+    private $city;
+
+    /*
+     * @ORM\ManyToOne(targetEntity="fabsalito\GeoBundle\Entity\Country")
+     */
+    private $country_id;
+
+    /*
+     * @ORM\ManyToOne(targetEntity="fabsalito\GeoBundle\Entity\State")
+     */
+    private $state_id;
+
+    /**
+     * @var string $zipcode
+     *
+     * @ORM\Column(name="zipcode", type="string", length=255)
+     *
+     * @Assert\Type(type="string")
+     */
+    private $zipcode;
 
     /**
      * @var string $area_code
@@ -42,30 +60,11 @@ class Country
     private $area_code;
 
     /**
-     * @var decimal $latitude
-     *
-     * @ORM\Column(name="latitude", type="decimal")
-     *
-     * @Assert\Type(type="decimal")
-     */
-    private $latitude;
-
-    /**
-     * @var decimal $longitude
-     *
-     * @ORM\Column(name="longitude", type="decimal")
-     *
-     * @Assert\Type(type="decimal")
-     */
-    private $longitude;
-
-    /**
      * @var datetime $created
      *
      * @ORM\Column(name="created", type="datetime")
      *
      * @Assert\DateTime
-     * @Assert\NotBlank()
      */
     private $created;
 
@@ -75,7 +74,6 @@ class Country
      * @ORM\Column(name="updated", type="datetime")
      *
      * @Assert\DateTime
-     * @Assert\NotBlank()
      */
     private $updated;
 
@@ -85,7 +83,6 @@ class Country
      * @ORM\Column(name="audit_user", type="string", length=255)
      *
      * @Assert\Type(type="string")
-     * @Assert\NotBlank()
      */
     private $audit_user;
 
@@ -95,15 +92,13 @@ class Country
      * @ORM\Column(name="enabled", type="boolean")
      *
      * @Assert\Type(type="bool")
-     * @Assert\NotBlank()
      */
     private $enabled;
 
     public function __toString()
     {
-        return $this->getCountry();
+        return $this->getCity();
     }
-
 
     /**
      * Get id
@@ -116,33 +111,56 @@ class Country
     }
 
     /**
-     * Set country
+     * Set city
      *
-     * @param string $country
-     * @return Country
+     * @param string $city
+     * @return City
      */
-    public function setCountry($country)
+    public function setCity($city)
     {
-        $this->country = $country;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get country
+     * Get city
      *
      * @return string
      */
-    public function getCountry()
+    public function getCity()
     {
-        return $this->country;
+        return $this->city;
+    }
+
+    /**
+     * Set zipcode
+     *
+     * @param string $zipcode
+     * @return City
+     */
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    /**
+     * Get zipcode
+     *
+     * @return string
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
     }
 
     /**
      * Set area_code
      *
      * @param string $areaCode
-     * @return Country
+     * @return City
      */
     public function setAreaCode($areaCode)
     {
@@ -162,56 +180,10 @@ class Country
     }
 
     /**
-     * Set latitude
-     *
-     * @param float $latitude
-     * @return Country
-     */
-    public function setLatitude($latitude)
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Get latitude
-     *
-     * @return float
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-
-    /**
-     * Set longitude
-     *
-     * @param float $longitude
-     * @return Country
-     */
-    public function setLongitude($longitude)
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    /**
-     * Get longitude
-     *
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Country
+     * @return City
      */
     public function setCreated($created)
     {
@@ -234,7 +206,7 @@ class Country
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Country
+     * @return City
      */
     public function setUpdated($updated)
     {
@@ -257,7 +229,7 @@ class Country
      * Set audit_user
      *
      * @param string $auditUser
-     * @return Country
+     * @return City
      */
     public function setAuditUser($auditUser)
     {
@@ -280,7 +252,7 @@ class Country
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Country
+     * @return City
      */
     public function setEnabled($enabled)
     {
