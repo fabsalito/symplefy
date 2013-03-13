@@ -1,0 +1,7 @@
+parameters:
+#    fabsalito_geo.example.class: fabsalito\GeoBundle\Example
+
+services:
+#    fabsalito_geo.example:
+#        class: %fabsalito_geo.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

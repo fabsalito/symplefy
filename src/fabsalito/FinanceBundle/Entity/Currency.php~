@@ -1,0 +1,72 @@
+<?php
+
+namespace fabsalito\FinanceCoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * fabsalito\FinanceCoreBundle\Entity\Currency
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="fabsalito\FinanceCoreBundle\Entity\CurrencyRepository")
+ */
+class Currency
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string $currency
+     *
+     * @ORM\Column(name="currency", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $currency;
+
+    /**
+     * @var string $currency_ds
+     *
+     * @ORM\Column(name="currency_ds", type="string", length=255)
+     */
+    private $currency_ds;
+
+    /**
+     * @var string $currency_doce
+     *
+     * @ORM\Column(name="currency_code", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $currency_code;
+
+    /**
+     * @var datetime $created
+     *
+     * @ORM\Column(name="created", type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $created;
+
+    /**
+     * @var datetime $updated
+     *
+     * @ORM\Column(name="updated", type="datetime")
+     * @Assert\NotBlank()
+     */
+    private $updated;
+
+    /**
+     * @var string $audit_user
+     *
+     * @ORM\Column(name="audit_user", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $audit_user;
+
+}

@@ -1,7 +1,0 @@
-parameters:
-#    finance_core.example.class: fabsalito\FinanceCoreBundle\Example
-
-services:
-#    finance_core.example:
-#        class: %finance_core.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

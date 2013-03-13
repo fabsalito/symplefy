@@ -1,3 +1,0 @@
-finance_core_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: FinanceCoreBundle:Default:index }

@@ -1,7 +1,0 @@
-parameters:
-#    entry.example.class: fabsalito\EntryBundle\Example
-
-services:
-#    entry.example:
-#        class: %entry.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
