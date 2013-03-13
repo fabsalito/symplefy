@@ -1,3 +1,0 @@
-fabsalito_geo_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: fabsalitoGeoBundle:Default:index }

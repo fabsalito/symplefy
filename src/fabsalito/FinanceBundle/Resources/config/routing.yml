@@ -1,3 +1,0 @@
-fabsalito_finance_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: fabsalitoFinanceBundle:Default:index }

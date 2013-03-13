@@ -1,7 +1,0 @@
-parameters:
-    fabsalito_finance.default.class: fabsalito\FinanceBundle\Controller\DefaultController
-
-services:
-     fabsalito_finance.default:
-        class: %fabsalito_finance.default.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
