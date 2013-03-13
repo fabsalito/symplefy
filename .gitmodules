@@ -1,0 +1,6 @@
+[submodule "src/fabsalito/FinanceBundle"]
+	path = src/fabsalito/FinanceBundle
+	url = http://github.com/fabsalito/FinanceBundle.git
+[submodule "src/fabsalito/GeoBundle"]
+	path = src/fabsalito/GeoBundle
+	url = http://github.com/fabsalito/GeoBundle.git
