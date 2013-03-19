@@ -1,13 +1,72 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{# block head #}
+    {% block head_style %}
+    {% stylesheets
+        '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+    {% endblock head_style %}
+
+    {% block head_script %}
+    {{ parent() }}
+    {% endblock head_script %}
+
+    {% block title %}symplefy - Doing your finances simple{% endblock title %}
+
+    {% block head_bottom %}
+    {{ parent() }}
+    {% endblock head_bottom %}
+{# endblock head #}
+
+{% block body_start %}
+{{ parent() }}
+{% endblock body_start %}
+
+{# block body #}
+    {% block navbar %}
+    {# mopa_bootstrap_navbar('symplefy.frontend.navbar') #}
+    {% endblock navbar %}
+
+    {# block container #}
+
+        {% block container_class %}
+        {# Redefinir la clase de ser necesario #}
+        {{ parent() }}
+        {% endblock container_class %}
+
+        {% block header %}
+        {# HEADER CODE #}
+        {% endblock header %}
+
+        {# block page_header #}
+
+            {% block headline %}
+            {{ parent() }}
+            {% endblock headline %}
+
+        {# endblock page_header #}
+
+        {% block flashes %}
+        {{ parent() }}
+        {% endblock flashes %}
+
+        {# block content_row #}
+
+            {% block content %}
+            {{ parent() }}
+            {% endblock content %}
+
+        {# endblock content_row #}
+
+        {% block footer %}
+        {{ parent() }}
+        {% endblock footer %}
+
+    {# endblock container #}
+
+    {% block foot_script %}
+    {{ parent() }}
+    {% endblock foot_script %}
+{# endblock body #}
