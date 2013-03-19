@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new fabsalito\FinanceBundle\fabsalitoFinanceBundle(),
             new fabsalito\symplefy\FrontendBundle\SymplefyFrontendBundle(),
             new fabsalito\symplefy\BackendBundle\SymplefyBackendBundle(),
+	    new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

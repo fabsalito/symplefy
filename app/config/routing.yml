@@ -1,14 +1,14 @@
-fabsalito_finance:
-    resource: "@fabsalitoFinanceBundle/Resources/config/routing.yml"
-    prefix:   /
+#fabsalito_finance:
+#    resource: "@fabsalitoFinanceBundle/Resources/config/routing.yml"
+#    prefix:   /
 
-fabsalito_geo:
-    resource: "@fabsalitoGeoBundle/Resources/config/routing.yml"
-    prefix:   /
+#fabsalito_geo:
+#    resource: "@fabsalitoGeoBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 symplefy_backend:
     resource: "@SymplefyBackendBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /backend
 
 symplefy_frontend:
     resource: "@SymplefyFrontendBundle/Resources/config/routing.yml"
