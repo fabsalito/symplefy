@@ -1,6 +1,9 @@
-{% extends 'MopaBootstrapBundle::base.html.twig' %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}symplefy - Doing your finances simple{% endblock title %}</title>
 
-{# block head #}
     {% block head_style %}
     {% stylesheets
         '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
@@ -10,63 +13,95 @@
     {% endblock head_style %}
 
     {% block head_script %}
-    {{ parent() }}
+    {# SCRIPTS HERE #}
     {% endblock head_script %}
 
-    {% block title %}symplefy - Doing your finances simple{% endblock title %}
-
     {% block head_bottom %}
-    {{ parent() }}
+    
     {% endblock head_bottom %}
-{# endblock head #}
-
-{% block body_start %}
-{{ parent() }}
-{% endblock body_start %}
-
-{# block body #}
-    {% block navbar %}
-    {# mopa_bootstrap_navbar('symplefy.frontend.navbar') #}
-    {% endblock navbar %}
-
-    {# block container #}
-
-        {% block container_class %}
-        {# Redefinir la clase de ser necesario #}
-        {{ parent() }}
-        {% endblock container_class %}
-
+</head>
+<body>
+    
+    <div class="container_fluid">
+    {% block container %}
         {% block header %}
-        {# HEADER CODE #}
+            <div class="row_fuid">
+                <div class="span4">
+                    <h1>
+                    {% block header_logo %}
+                        symplefy
+                    {% endblock header_logo %}
+                    </h1>
+                </div>
+            
+                <div class="span8 offset3">
+                {% block header_menu %}
+                    #MENU#
+                {% endblock header_menu %}
+                </div>
+            </div>
         {% endblock header %}
 
-        {# block page_header #}
+        {% block content %}
+            <div class="row_fluid">
 
-            {% block headline %}
-            {{ parent() }}
-            {% endblock headline %}
+                <div class="span9">
+                {% block content_main %}
+                    #CONTENT_MAIN#
+                {% endblock content_main %}
+                </div>
 
-        {# endblock page_header #}
+                <div class="span3">
+                {% block content_sidebar %}
+                    #CONTENT_SIDEBAR#
+                {% endblock content_sidebar%}
+                </div>
 
-        {% block flashes %}
-        {{ parent() }}
-        {% endblock flashes %}
-
-        {# block content_row #}
-
-            {% block content %}
-            {{ parent() }}
-            {% endblock content %}
-
-        {# endblock content_row #}
+            </div>
+        {% endblock content %}
 
         {% block footer %}
-        {{ parent() }}
+            <div class="row_fluid">
+                <div class="span4">
+                    {% block footer_left %}
+                        symplefy {% block anio %}2013{% endblock anio %} - All rights reserved
+                    {% endblock footer_left %}
+                </div>
+
+                <div class="span8">
+                    {% block footer_right %}
+                        #FOOTER_RIGHT#
+                    {% endblock footer_right %}
+                </div>
+            </div>
         {% endblock footer %}
+    {% endblock container %}
+    </div>
 
-    {# endblock container #}
-
-    {% block foot_script %}
-    {{ parent() }}
-    {% endblock foot_script %}
-{# endblock body #}
+    {% block body_script %}
+    {# To only use a subset or add more js overwrite and copy paste this block
+    To speed up page loads save a copy of jQuery in your project and override this block to include the correct path
+    Otherwise the regeneration is done on every load in dev more with use_controller: true
+     #}
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% endblock body_script %}
+</body>
+</html>
