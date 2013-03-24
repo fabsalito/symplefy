@@ -20,30 +20,32 @@
     
     {% endblock head_bottom %}
 </head>
-<body>
+<body data-spy="scroll">
     
-    <div class="container_fluid">
+    <div class="container-fluid">
     {% block container %}
         {% block header %}
-            <div class="row_fuid">
-                <div class="span4">
-                    <h1>
-                    {% block header_logo %}
-                        symplefy
-                    {% endblock header_logo %}
-                    </h1>
-                </div>
-            
-                <div class="span8 offset3">
-                {% block header_menu %}
-                    #MENU#
-                {% endblock header_menu %}
+            <div class="page-header">
+                <div class="row-fluid">
+                    <div class="span4">
+                        <h1>
+                        {% block header_logo %}
+                            symplefy
+                        {% endblock header_logo %}
+                        </h1>
+                    </div>
+                
+                    <div class="span8">
+                    {% block header_menu %}
+                        #MENU#
+                    {% endblock header_menu %}
+                    </div>
                 </div>
             </div>
         {% endblock header %}
 
         {% block content %}
-            <div class="row_fluid">
+            <div class="row-fluid">
 
                 <div class="span9">
                 {% block content_main %}
@@ -61,17 +63,19 @@
         {% endblock content %}
 
         {% block footer %}
-            <div class="row_fluid">
-                <div class="span4">
-                    {% block footer_left %}
-                        symplefy {% block anio %}2013{% endblock anio %} - All rights reserved
-                    {% endblock footer_left %}
-                </div>
+            <div class="page-footer">
+                <div class="row-fluid">
+                    <div class="span4">
+                        {% block footer_left %}
+                            symplefy {% block anio %}2013{% endblock anio %} - All rights reserved
+                        {% endblock footer_left %}
+                    </div>
 
-                <div class="span8">
-                    {% block footer_right %}
-                        #FOOTER_RIGHT#
-                    {% endblock footer_right %}
+                    <div class="span8">
+                        {% block footer_right %}
+                            #FOOTER_RIGHT#
+                        {% endblock footer_right %}
+                    </div>
                 </div>
             </div>
         {% endblock footer %}
