@@ -8,3 +8,5 @@
 /composer.phar
 *.sublime*
 *backup*
+composer.lock
+
