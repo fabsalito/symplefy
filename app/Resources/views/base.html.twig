@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
     <title>{% block title %}symplefy - Doing your finances simple{% endblock title %}</title>
 
     {% block head_style %}
@@ -10,7 +11,10 @@
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
+    <link href="css/estilosTemporales.css" type="text/css" rel="stylesheet" media="screen">
     {% endblock head_style %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block head_script %}
     {# SCRIPTS HERE #}
@@ -25,21 +29,50 @@
     <div class="container-fluid">
     {% block container %}
         {% block header %}
-            <div class="page-header">
-                <div class="row-fluid">
-                    <div class="span4">
-                        <h1>
-                        {% block header_logo %}
-                            symplefy
-                        {% endblock header_logo %}
-                        </h1>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="hero-unit">
+                        <h1>symplefy</h1>
+                        <p>
+                        {% block header_logo_cite %}
+                            Doing your finances simple
+                        {% endblock header_logo_cite %}
+                        </p>
+                        <p>
+                            <a href="#learnMoreModal" role="button" class="btn btn-primary" data-toggle="modal">
+                                Learn more
+                            </a>
+                        </p>
+
+                        <!-- MODAL: separar este código en otra página - B -->
+                        <div class="modal hide fade" id="learnMoreModal" tabindex="-1" role="dialog" aria-labelledby="myLearnMoreModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h3 id="myLearnMoreModalLabel">Learn more</h3>
+                            </div>
+                            <div class="modal-body">
+                                {% include 'SymplefyFrontendBundle:Default:includes/learnMoreSymplefy.html.twig' %}
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                            </div>
+                        </div>
+                        <!-- MODAL: separar este código en otra página - E -->
                     </div>
-                
-                    <div class="span8">
-                    {% block header_menu %}
-                        #MENU#
-                    {% endblock header_menu %}
+                </div>
+            
+                <div class="span6">
+                {% block header_menu %}
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <div class="container">
+                            {% block header_menu_main %}
+                                {{ knp_menu_render('main') }}
+                            {% endblock header_menu_main %}
+                            </div>
+                        </div>
                     </div>
+                {% endblock header_menu %}
                 </div>
             </div>
         {% endblock header %}
@@ -47,37 +80,63 @@
         {% block content %}
             <div class="row-fluid">
 
-                <div class="span9">
                 {% block content_main %}
-                    #CONTENT_MAIN#
+                <div class="span9">
+                    #CONTENT_MAIN_BASE#
+                </div>
                 {% endblock content_main %}
-                </div>
-
-                <div class="span3">
+                
                 {% block content_sidebar %}
-                    #CONTENT_SIDEBAR#
-                {% endblock content_sidebar%}
+                <div class="span3">
+                    #CONTENT_SIDEBAR_BASE#
                 </div>
-
+                {% endblock content_sidebar%}
+                
             </div>
         {% endblock content %}
 
         {% block footer %}
-            <div class="page-footer">
+            <footer>
                 <div class="row-fluid">
                     <div class="span4">
-                        {% block footer_left %}
-                            symplefy {% block anio %}2013{% endblock anio %} - All rights reserved
-                        {% endblock footer_left %}
+                    {% block footer_left %}
+                        &copy; symplefy {% block anio %}{{ "now" | date("Y") }}{% endblock anio %} - All rights reserved
+                    {% endblock footer_left %}
                     </div>
 
                     <div class="span8">
+                        <div class="row-fluid">
                         {% block footer_right %}
-                            #FOOTER_RIGHT#
+                            <div class="span3 offset3">
+                                <strong>symplefy</strong>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'about' } ) }}">About Us</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'freeMember' } ) }}">Free Membership</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'proMember' } ) }}">Pro Membership</a></li>
+                                </ul>
+                            </div>
+                            <div class="span3">
+                                <strong>Community</strong>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'contact' } ) }}">Contact Us</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_blog_home' ) }}">Blog</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_twitter_home' ) }}">Twitter</a></li>
+                                </ul>
+                            </div>
+                            <div class="span3">
+                                <strong>Support</strong>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'help' } ) }}">Help</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'terms' } ) }}">Terms</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'privacy' } ) }}">Privacy</a></li>
+                                    <li><a href="{{ path('symplefy_frontend_static', { 'page': 'copyrigth' } ) }}">Copyrigth</a></li>
+                                </ul>
+                            </div>
                         {% endblock footer_right %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         {% endblock footer %}
     {% endblock container %}
     </div>
@@ -88,7 +147,7 @@
     Otherwise the regeneration is done on every load in dev more with use_controller: true
      #}
     {% javascripts
-        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+        'js/jquery-1.7.1.min.js'
         '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
         '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
         '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'

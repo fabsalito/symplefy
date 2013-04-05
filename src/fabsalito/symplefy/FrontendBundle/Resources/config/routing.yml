@@ -1,3 +1,15 @@
 symplefy_frontend_homepage:
     pattern:  /
     defaults: { _controller: SymplefyFrontendBundle:Default:index }
+
+symplefy_frontend_static:
+    pattern: /static/{page}
+    defaults: { _controller: SymplefyFrontendBundle:Static:global, page: about }
+
+symplefy_frontend_blog_home:
+    pattern: /blog 
+    defaults: { _controller: SymplefyFrontendBundle:Blog:index }
+
+symplefy_frontend_twitter_home:
+    pattern: /twitter
+    defaults: { _controller: SymplefyFrontendBundle:Twitter:index }
