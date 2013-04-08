@@ -27,7 +27,7 @@ class MenuBuilder extends AbstractNavbarMenuBuilder
         //$menu->addChild('Home', array('route' => 'symplefy_frontend_homepage'));
 
         // languages menu
-        $dropdown = $this->createDropdownMenuItem($menu, "Language", true, array('icon', 'icon-flag'), array('caret' => true));
+        $dropdown = $this->createDropdownMenuItem($menu, "Language", true, array('class', 'icon-flag'), array('caret' => true));
         $dropdown->addChild('Spanish', array('uri' => '#'));
         $dropdown->addChild('English', array('uri' => '#'));
 

@@ -18,9 +18,9 @@
         "sensio/generator-bundle": "2.2.*",
         "jms/security-extra-bundle": "1.4.*",
         "jms/di-extra-bundle": "1.3.*",
-	    "mopa/bootstrap-bundle": "2.1.*",
-        "twitter/bootstrap": "2.3.*",
-        "knplabs/knp-menu-bundle" : "1.1.*"
+	    "mopa/bootstrap-bundle": "dev-master",
+        "twitter/bootstrap": "dev-master",
+        "knplabs/knp-menu-bundle" : "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -37,9 +37,10 @@
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+	"process-timeout": "3600"
     },
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
