@@ -114,7 +114,7 @@ class MenuBuilder
         ;
         $menu['symplefy']->addChild('Concepts', array('route' => 'symplefy_frontend_setting_concept'));
         $menu['symplefy']->addChild('Accounts', array('route' => 'symplefy_frontend_setting_account'));
-        $menu['symplefy']->addChild('Credits Cars', array('route' => 'symplefy_frontend_setting_creditcard'));
+        $menu['symplefy']->addChild('Credits Cards', array('route' => 'symplefy_frontend_setting_creditcard'));
         $menu['symplefy']->addChild('Shops', array('route' => 'symplefy_frontend_setting_shop'));
         
         return $menu;
