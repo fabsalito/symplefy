@@ -4,40 +4,119 @@ namespace fabsalito\symplefy\FrontendBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Mopa\Bundle\BootstrapBundle\Navbar\AbstractNavbarMenuBuilder;
+//use Mopa\Bundle\BootstrapBundle\Navbar\AbstractNavbarMenuBuilder;
 
-class MenuBuilder extends AbstractNavbarMenuBuilder
+//class MenuBuilder extends AbstractNavbarMenuBuilder
+class MenuBuilder
 {
-    //protected $factory;
+    protected $factory;
 
     /**
      * @param FactoryInterface $factory
      */
-    //public function __construct(FactoryInterface $factory)
-    //{
-    //    $this->factory = $factory;
-    //}
+    public function __construct(FactoryInterface $factory)
+    {
+        $this->factory = $factory;
+    }
 
     public function createMainMenu(Request $request)
     {
+        // menu object
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav pull-right');
 
-        // home
-        //$menu->addChild('Home', array('route' => 'symplefy_frontend_homepage'));
+
+        // home button
+        $menu->addChild('', array('route' => 'symplefy_frontend_homepage'))
+            ->setLabel('<i class="icon-home icon-white"></i>')
+            ->setExtra('safe_label', true)
+        ;
+
+        // divider vertical
+        $menu->addChild('divider-vertical_'.rand())
+            ->setLabel('')
+            ->setAttribute('class', 'divider-vertical')
+            ;
+
+        // user menú
+        $menu->addChild('User', array('uri' => '#'))
+            ->setLinkattribute('class', 'dropdown-toggle')
+            ->setLinkattribute('data-toggle', 'dropdown')
+            ->setAttribute('class', 'dropdown')
+            ->setChildrenAttribute('class', 'dropdown-menu')
+            ->setLabel('User <span class="caret"></span>')
+            ->setExtra('safe_label', true)
+        ;
+
+        $menu['User']->addChild('Profile', array('route' => 'symplefy_frontend_user_profile'));
+        $menu['User']->addChild('Collaborators', array('route' => 'symplefy_frontend_user_collaborator'));
+        // divisor horizontal
+        $menu['User']->addChild('divider_'.rand())
+            ->setLabel('')
+            ->setAttribute('class', 'divider')
+            ;
+        $menu['User']->addChild('Login', array('route' => 'symplefy_frontend_user_login'));
 
         // languages menu
-        $dropdown = $this->createDropdownMenuItem($menu, "Language", true, array('class', 'icon-flag'), array('caret' => true));
-        $dropdown->addChild('Spanish', array('uri' => '#'));
-        $dropdown->addChild('English', array('uri' => '#'));
+        $menu->addChild('Languages', array('uri' => '#'))
+            ->setLinkattribute('class', 'dropdown-toggle')
+            ->setLinkattribute('data-toggle', 'dropdown')
+            ->setAttribute('class', 'dropdown')
+            ->setChildrenAttribute('class', 'dropdown-menu')
+            ->setLabel('Languages <span class="caret"></span>')
+            ->setExtra('safe_label', true)
+        ;
 
-        // symplefy menu
-        //$dropdown = $this->createDropdownMenuItem($menu, "symplefy", true, array('caret' => true));
-        //$dropdown->addChild('Option 1', array('uri' => '#'));
-        //$dropdown->addChild('Option 2', array('uri' => '#'));
-        //$dropdown->addChild('Option 3', array('uri' => '#'));
-        //$dropdown->addChild('Option 4', array('uri' => '#'));
+        $menu['Languages']->addChild('Spanish', array('uri' => '#'));
+        $menu['Languages']->addChild('English', array('uri' => '#'));
 
+        // symplefy menú
+        $menu->addChild('symplefy', array('uri' => '#'))
+            ->setLinkattribute('class', 'dropdown-toggle')
+            ->setLinkattribute('data-toggle', 'dropdown')
+            ->setAttribute('class', 'dropdown')
+            ->setChildrenAttribute('class', 'dropdown-menu')
+            ->setLabel('symplefy <span class="caret"></span>')
+            ->setExtra('safe_label', true)
+        ;
+
+        $menu['symplefy']->addChild('Dashboard', array('route' => 'symplefy_frontend_homepage'));
+        
+        // divisor horizontal
+        $menu['symplefy']->addChild('divider_'.rand())
+            ->setLabel('')
+            ->setAttribute('class', 'divider')
+        ;
+        
+        $menu['symplefy']->addChild('Plans', array('route' => 'symplefy_frontend_plan_read'));
+        $menu['symplefy']->addChild('Forecast', array('route' => 'symplefy_frontend_forecast_read'));
+        $menu['symplefy']->addChild('Transactions', array('route' => 'symplefy_frontend_transaction_read'));
+        
+        // divisor horizontal
+        $menu['symplefy']->addChild('divider_'.rand())
+            ->setLabel('')
+            ->setAttribute('class', 'divider')
+            ;
+        
+        $menu['symplefy']->addChild('Reporting')
+            ->setAttribute('class', 'nav-header')
+        ;
+        $menu['symplefy']->addChild('Actual vs Plan', array('route' => 'symplefy_frontend_reporting_actualvsplan'));
+        
+        // divisor horizontal
+        $menu['symplefy']->addChild('divider_'.rand())
+            ->setLabel('')
+            ->setAttribute('class', 'divider')
+        ;
+        
+        $menu['symplefy']->addChild('Settings')
+            ->setAttribute('class', 'nav-header')
+        ;
+        $menu['symplefy']->addChild('Concepts', array('route' => 'symplefy_frontend_setting_concept'));
+        $menu['symplefy']->addChild('Accounts', array('route' => 'symplefy_frontend_setting_account'));
+        $menu['symplefy']->addChild('Credits Cars', array('route' => 'symplefy_frontend_setting_creditcard'));
+        $menu['symplefy']->addChild('Shops', array('route' => 'symplefy_frontend_setting_shop'));
+        
         return $menu;
     }
 

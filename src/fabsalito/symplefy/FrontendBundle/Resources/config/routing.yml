@@ -1,11 +1,3 @@
-symplefy_frontend_homepage:
-    pattern:  /
-    defaults: { _controller: SymplefyFrontendBundle:Default:index }
-
-symplefy_frontend_static:
-    pattern: /static/{page}
-    defaults: { _controller: SymplefyFrontendBundle:Static:global, page: about }
-
 symplefy_frontend_blog_home:
     pattern: /blog 
     defaults: { _controller: SymplefyFrontendBundle:Blog:index }
@@ -13,3 +5,95 @@ symplefy_frontend_blog_home:
 symplefy_frontend_twitter_home:
     pattern: /twitter
     defaults: { _controller: SymplefyFrontendBundle:Twitter:index }
+
+symplefy_frontend_static:
+    pattern: /static/{page}
+    defaults: { _controller: SymplefyFrontendBundle:Static:global, page: about }
+
+symplefy_frontend_user_login:
+    pattern: /user/login
+    defaults: { _controller: SymplefyFrontendBundle:Security:login }
+
+symplefy_frontend_user_register:
+    pattern: /user/register
+    defaults: { _controller: SymplefyFrontendBundle:Security:register }
+
+symplefy_frontend_user_profile:
+    pattern: /user/profile/{user}
+    defaults: { _controller: SymplefyFrontendBundle:Security:profile, user: anonymous }
+
+symplefy_frontend_user_collaborator:
+    pattern: /user/collaborator/{user}
+    defaults: { _controller: SymplefyFrontendBundle:Security:collaborator, user: anonymous }
+
+symplefy_frontend_reporting_actualvsplan:
+    pattern: /{user}/reporting/actualvsplan/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Reporting:actualVsPlan, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_setting_concept:
+    pattern: /{user}/setting/concept
+    defaults: { _controller:SymplefyFrontendBundle:Setting:concept, user: anonymous }
+
+symplefy_frontend_setting_account:
+    pattern: /{user}/setting/account
+    defaults: { _controller:SymplefyFrontendBundle:Setting:account, user: anonymous }
+
+symplefy_frontend_setting_creditcard:
+    pattern: /{user}/setting/creditcard
+    defaults: { _controller:SymplefyFrontendBundle:Setting:creditCard, user: anonymous }
+
+symplefy_frontend_setting_shop:
+    pattern: /{user}/setting/shop
+    defaults: { _controller:SymplefyFrontendBundle:Setting:shop, user: anonymous }
+
+symplefy_frontend_plan_create:
+    pattern: /{user}/plan/create
+    defaults: { _controller:SymplefyFrontendBundle:Default:planCreate, user: anonymous }
+
+symplefy_frontend_plan_read:
+    pattern: /{user}/plan/read/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:planRead, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_plan_update:
+    pattern: /{user}/plan/update/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:planUpdate, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_plan_delete:
+    pattern: /{user}/plan/delete/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:planDelete, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_forecast_create:
+    pattern: /{user}/forecast/create
+    defaults: { _controller:SymplefyFrontendBundle:Default:forecastCreate, user: anonymous }
+
+symplefy_frontend_forecast_read:
+    pattern: /{user}/forecast/read/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:forecastRead, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_forecast_update:
+    pattern: /{user}/forecast/update/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:forecastUpdate, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_forecast_delete:
+    pattern: /{user}/forecast/delete/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:forecastDelete, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_transaction_create:
+    pattern: /{user}/transaction/create
+    defaults: { _controller:SymplefyFrontendBundle:Default:transactionCreate, user: anonymous }
+
+symplefy_frontend_transaction_read:
+    pattern: /{user}/transaction/read/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:transactionRead, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_transaction_update:
+    pattern: /{user}/transaction/update/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:transactionUpdate, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_transaction_delete:
+    pattern: /{user}/transaction/delete/{anio}/{mes}
+    defaults: { _controller:SymplefyFrontendBundle:Default:transactionDelete, user: anonymous, anio: -1, mes: -1 }
+
+symplefy_frontend_homepage:
+    pattern:  /{user}/{anio}/{mes}
+    defaults: { _controller: SymplefyFrontendBundle:Default:index, user: anonymous, anio: -1, mes: -1 }

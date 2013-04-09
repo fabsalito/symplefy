@@ -6,12 +6,12 @@
     <title>{% block title %}symplefy - Doing your finances simple{% endblock title %}</title>
 
     {% block head_style %}
-    {% stylesheets
+    {% stylesheets filter='less,cssrewrite,?yui_css'
         '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+        'css/estilosTemporales.css'
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
-    <link href="css/estilosTemporales.css" type="text/css" rel="stylesheet" media="screen">
     {% endblock head_style %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +67,7 @@
                         <div class="navbar-inner">
                             <div class="container">
                             {% block header_menu_main %}
-                                {{ knp_menu_render('main') }}
+                                {{ knp_menu_render('main', { 'allow_safe_labels' : 'true' }) }}
                             {% endblock header_menu_main %}
                             </div>
                         </div>
