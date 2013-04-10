@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new fabsalito\symplefy\BackendBundle\SymplefyBackendBundle(),
 	        new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

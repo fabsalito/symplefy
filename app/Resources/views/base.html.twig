@@ -79,18 +79,21 @@
 
         {% block content %}
             <div class="row-fluid">
-
-                {% block content_main %}
-                <div class="span9">
-                    #CONTENT_MAIN_BASE#
+                <div class="span12">
+                    <div class="row-fluid">
+                        {% block content_main %}
+                        <div class="span9">
+                            #CONTENT_MAIN_BASE#
+                        </div>
+                        {% endblock content_main %}
+                        
+                        {% block content_sidebar %}
+                        <div class="span3">
+                            #CONTENT_SIDEBAR_BASE#
+                        </div>
+                        {% endblock content_sidebar%}
+                    </div>
                 </div>
-                {% endblock content_main %}
-                
-                {% block content_sidebar %}
-                <div class="span3">
-                    #CONTENT_SIDEBAR_BASE#
-                </div>
-                {% endblock content_sidebar%}
                 
             </div>
         {% endblock content %}

@@ -1,3 +1,24 @@
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /user
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
 symplefy_frontend_blog_home:
     pattern: /blog 
     defaults: { _controller: SymplefyFrontendBundle:Blog:index }
@@ -10,17 +31,17 @@ symplefy_frontend_static:
     pattern: /static/{page}
     defaults: { _controller: SymplefyFrontendBundle:Static:global, page: about }
 
-symplefy_frontend_user_login:
-    pattern: /user/login
-    defaults: { _controller: SymplefyFrontendBundle:Security:login }
+#symplefy_frontend_user_login:
+#    pattern: /user/login
+#    defaults: { _controller: SymplefyFrontendBundle:Security:login }
 
-symplefy_frontend_user_register:
-    pattern: /user/register
-    defaults: { _controller: SymplefyFrontendBundle:Security:register }
+#symplefy_frontend_user_register:
+#    pattern: /user/register
+#    defaults: { _controller: SymplefyFrontendBundle:Security:register }
 
-symplefy_frontend_user_profile:
-    pattern: /user/profile/{user}
-    defaults: { _controller: SymplefyFrontendBundle:Security:profile, user: anonymous }
+#symplefy_frontend_user_profile:
+#    pattern: /user/profile/{user}
+#    defaults: { _controller: SymplefyFrontendBundle:Security:profile, user: anonymous }
 
 symplefy_frontend_user_collaborator:
     pattern: /user/collaborator/{user}

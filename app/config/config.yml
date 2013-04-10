@@ -5,6 +5,7 @@ imports:
 framework:
     #esi:             ~
     #translator:      { fallback: %locale% }
+    translator:      ~
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -58,7 +59,13 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+        #auto_mapping: true
+        mappings:
+            FOSUserBundle:              ~
+            SymplefyFrontendBundle:     ~
+            SymplefyBackendBundle:      ~
+            fabsalitoFinanceBundle:     ~
+            fabsalitoGeoBundle:         ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -76,3 +83,11 @@ knp_menu:
     #providers:
         #builder_alias: false    # disable the builder-based provider
         #container_aware: true   # keep this one enabled. Can be omitted as it is the default
+
+fos_user:
+    # tipo de ORM/ODB que utilizas (también puede ser 'mongodb', 'couchdb' y 'propel')
+    db_driver:     orm
+    # el nombre de tu firewall
+    firewall_name: main
+    # el namespace de tu clase 'User' específica
+    user_class:    fabsalito\symplefy\FrontendBundle\Entity\User

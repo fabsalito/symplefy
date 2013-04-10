@@ -1,8 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'SymplefyFrontendBundle::layout.html.twig' %}
 
 {% block content_main %}
 <div class="span6 offset3">
-    {{ block('fos_user_content') }}
+    {% block fos_user_content %}
+    
+    {% endblock fos_user_content %}
 </div>
 <div class="span3">
 </div>

@@ -6,6 +6,7 @@
 /vendor/
 /bin/
 /composer.phar
-*.sublime*
-*backup*
+/*.sublime*
+/*backup*
+/*~
 

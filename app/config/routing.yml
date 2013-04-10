@@ -13,4 +13,3 @@ symplefy_backend:
 symplefy_frontend:
     resource: "@SymplefyFrontendBundle/Resources/config/routing.yml"
     prefix:   /
-

@@ -48,14 +48,14 @@ class MenuBuilder
             ->setExtra('safe_label', true)
         ;
 
-        $menu['User']->addChild('Profile', array('route' => 'symplefy_frontend_user_profile'));
+        $menu['User']->addChild('Profile', array('route' => 'fos_user_profile_show'));
         $menu['User']->addChild('Collaborators', array('route' => 'symplefy_frontend_user_collaborator'));
         // divisor horizontal
         $menu['User']->addChild('divider_'.rand())
             ->setLabel('')
             ->setAttribute('class', 'divider')
             ;
-        $menu['User']->addChild('Login', array('route' => 'symplefy_frontend_user_login'));
+        $menu['User']->addChild('Login', array('route' => 'fos_user_security_login'));
 
         // languages menu
         $menu->addChild('Languages', array('uri' => '#'))
