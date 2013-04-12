@@ -77,4 +77,24 @@ class DefaultController extends Controller
     {
         return $this->render('SymplefyFrontendBundle:Default:transactionDelete.html.twig');
     }
+
+    public function changeLanguageAction($locale)
+    {
+        // set locale
+        if (null != $locale)
+        {
+            $this->get('session')->set('locale', $locale);
+        }
+
+        // get last url
+        $referer_url = $this->get('request')->headers->get('referer');
+
+        // if there is not last url then get home url
+        if (null == $referer_url)
+        {
+            $referer_url = $this->generateUrl('symplefy_frontend_homepage');
+        }
+
+        return $this->redirect($referer_url);
+    }
 }

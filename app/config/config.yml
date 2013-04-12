@@ -4,8 +4,8 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
-    translator:      ~
+    translator:      { fallback: %locale% }
+    #translator:      ~
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -59,13 +59,13 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        #auto_mapping: true
-        mappings:
-            FOSUserBundle:              ~
-            SymplefyFrontendBundle:     ~
-            SymplefyBackendBundle:      ~
-            fabsalitoFinanceBundle:     ~
-            fabsalitoGeoBundle:         ~
+        auto_mapping: true
+        #mappings:
+        #    FOSUserBundle:              ~
+        #    SymplefyFrontendBundle:     ~
+        #    SymplefyBackendBundle:      ~
+        #    fabsalitoFinanceBundle:     ~
+        #    fabsalitoGeoBundle:         ~
 
 # Swiftmailer Configuration
 swiftmailer:

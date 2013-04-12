@@ -19,6 +19,10 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
+symplefy_frontend_language:
+    pattern: /language/{locale}
+    defaults: { _controller: SymplefyFrontendBundle:Default:changeLanguage, locale: %locale% }
+
 symplefy_frontend_blog_home:
     pattern: /blog 
     defaults: { _controller: SymplefyFrontendBundle:Blog:index }

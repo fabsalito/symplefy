@@ -67,8 +67,12 @@ class MenuBuilder
             ->setExtra('safe_label', true)
         ;
 
-        $menu['Languages']->addChild('Spanish', array('uri' => '#'));
-        $menu['Languages']->addChild('English', array('uri' => '#'));
+        $menu['Languages']->addChild('Spanish', array('route' => 'symplefy_frontend_language',
+                                                      'routeParameters' => array('locale' => 'es')
+                                                ));
+        $menu['Languages']->addChild('English', array('route' => 'symplefy_frontend_language',
+                                                      'routeParameters' => array('locale' => 'en')
+                                                ));
 
         // symplefy menú
         $menu->addChild('symplefy', array('uri' => '#'))
