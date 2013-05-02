@@ -91,3 +91,5 @@ fos_user:
     firewall_name: main
     # el namespace de tu clase 'User' específica
     user_class:    fabsalito\symplefy\FrontendBundle\Entity\User
+    group:
+        group_class: fabsalito\symplefy\FrontendBundle\Entity\Group
