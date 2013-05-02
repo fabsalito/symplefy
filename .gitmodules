@@ -4,3 +4,6 @@
 [submodule "src/fabsalito/GeoBundle"]
 	path = src/fabsalito/GeoBundle
 	url = http://github.com/fabsalito/GeoBundle.git
+[submodule "path=src/fabsalito"]
+	path = path=src/fabsalito
+	url = http://github.com/fabsalito/FinanceBundle.git
